@@ -19,7 +19,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const userRoute = require("./modules/users/users.route");
+const eventsRoute = require("./modules/events/events.route");
 app.use("/api", userRoute);
+app.use("/api", eventsRoute);
 
 app.get("/", (req, res) => {
     res.json({ message: "Welcome to the API" });
@@ -27,7 +29,7 @@ app.get("/", (req, res) => {
 
 const PORT = process.env.PORT || 3001;
 const server = app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+    console.log(`Server is running on port http://localhost:${PORT}`);
 });
 
 server.on('error', (err) => {
