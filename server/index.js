@@ -20,8 +20,10 @@ app.use(express.urlencoded({ extended: true }));
 
 const userRoute = require("./modules/users/users.route");
 const eventsRoute = require("./modules/events/events.route");
+const registrationsRoute = require("./modules/registrations/regis.route");
 app.use("/api", userRoute);
 app.use("/api", eventsRoute);
+app.use("/api", registrationsRoute);
 
 app.get("/", (req, res) => {
     res.json({ message: "Welcome to the API" });
