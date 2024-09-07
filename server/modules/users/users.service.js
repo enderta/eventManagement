@@ -66,3 +66,12 @@ exports.deleteUser = async (id) => {
     }
     return deletedUser.rows[0];
 };
+
+// Get User By Email
+exports.getUserByEmail = async (email) => {
+    const user = await pool.query("SELECT id, role_id FROM users WHERE email = $1", [email]);
+    if (user.rows.length === 0) {
+        throw new Error("User not found");
+    }
+    return user.rows[0];
+};
